@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .galeria{
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 80%;
+        }
+
+        .galeria div{
+            text-align: center;
+
+        }
+
+        img{
+            display: block;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Galería de imágenes</h1>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+
+        <input type="text" placeholder="URL de la imagen" id="imagenURL">
+        <input type="text" placeholder="Pie de foto" id="pieFoto">
+        <button onclick="agregarImagen()">Agregar imagen</button>
+
+    </div>
+
+    <div class="galeria" id="galeriaImagenes">
+
+        <div>
+            <img src="imgs/paisaje1.jpg" alt="Imagen 1" width="300" height="250">
+            <p>Pie de foto Imagen 1</p>
+        </div>
+
+        <div>
+            <img src="imgs/paisaje2.jpg" alt="Imagen 2" width="300" height="250">
+            <p>Pie de foto Imagen 2</p>
+        </div>
+
+        <div>
+            <img src="imgs/paisaje3.jpg" alt="Imagen 3" width="300" height="250">
+            <p>Pie de foto Imagen 3</p>
+        </div>
+
+        <div>
+            <img src="imgs/paisaje4.jpg" alt="Imagen 4" width="300" height="250">
+            <p>Pie de foto Imagen 4</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        function agregarImagen() {
+            var url = document.getElementById("imagenURL").value;
+            var pie = document.getElementById("pieFoto").value;
+
+            if (url && pie) {
+                var galeria = document.getElementById("galeriaImagenes");
+                var img = document.createElement("img");
+                var div = document.createElement("div");
+                img.width = 300;
+                img.src = url;
+                img.height = 250;
+                var p = document.createElement("p");
+                p.textContent = pie;
+                div.appendChild(img);
+                div.appendChild(p);
+                galeria.appendChild(div);
+                document.getElementById("imagenURL").value = "";
+                document.getElementById("pieFoto").value = "";
+            } else {
+                alert("Por favor, completa ambos campos.");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
